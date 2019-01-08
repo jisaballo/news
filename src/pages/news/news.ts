@@ -1,19 +1,26 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import Parser from 'rss-parser';
 import { NewsDetailPage } from '../news-detail/news-detail';
 
+@IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-news',
+  templateUrl: 'news.html',
 })
-export class HomePage {
+export class NewsPage {
 
+  title: string = 'Noticias';
+  url: string = null;
   feed: any = null;
 
-  constructor(public navCtrl: NavController, private loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private loadingCtrl: LoadingController) {
+    this.url = this.navParams.get('url');
     this.loadRSS();
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad NewsPage');
   }
 
   async loadRSS() {
@@ -27,7 +34,8 @@ export class HomePage {
 
     const CORS_PROXY = "https://cors-anywhere.herokuapp.com/"
 
-    this.feed = await parser.parseURL(CORS_PROXY + 'https://www.elcomercio.com/rss/');
+    this.feed = await parser.parseURL(CORS_PROXY + this.url);
+    this.title = this.feed.description;
     //console.log(this.feed);
     loading.dismiss();
   }

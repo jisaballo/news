@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Detalle</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="noticia">
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="assets/imgs/empty-img.png">
+      </ion-avatar>
+      <h2>El Comercio</h2>
+      <p>{{noticia.pubDate | date : "dd MMM yyyy hh:mm a"}}</p>
+    </ion-item>
+    <div *ngIf="noticia.enclosure"><img [src]="noticia.enclosure.url"></div>
+    <ion-card-content>
+      <span ion-text color="primary">{{noticia.author}}</span>
+      <h2>{{noticia.title}}</h2>
+      <br>
+      <span>{{noticia.content}}</span>
+    </ion-card-content>
+    <ion-item-divider no-lines></ion-item-divider>
+  </div>
+  <div padding>
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button large block round outline (click)="shareViaWhatsapp()">
+          <span>Compartir</span>
+        </button>
+      </ion-col>
+      <ion-col col-6><button ion-button large block round (click)="viewOnBrowser()">Ver</button></ion-col>
+    </ion-row>
+  </div>
+</ion-content>
