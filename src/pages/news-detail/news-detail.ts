@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { OfflineProvider } from '../../providers/offline/offline';
 
 @IonicPage()
 @Component({
@@ -12,13 +13,19 @@ export class NewsDetailPage {
 
   noticia: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private iab: InAppBrowser, private socialSharing: SocialSharing) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private iab: InAppBrowser, 
+    private socialSharing: SocialSharing, private offline: OfflineProvider) {
     this.noticia = this.navParams.get('item');
     //console.log(this.noticia);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewsDetailPage');
+  }
+
+  ionViewWillLeave() {
+    console.log('here');
+    this.offline.presentRating();
   }
 
   viewOnBrowser() {

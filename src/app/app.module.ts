@@ -14,6 +14,9 @@ import { NewsDetailPageModule } from '../pages/news-detail/news-detail.module';
 import { NewsPageModule } from '../pages/news/news.module';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { OfflineProvider } from '../providers/offline/offline';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRate } from '@ionic-native/app-rate';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     NewsPageModule,
     NewsDetailPageModule,
     IonicModule.forRoot(MyApp)
@@ -41,8 +45,10 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     StatusBar,
     SplashScreen,
     InAppBrowser,
+    AppRate,
     SocialSharing,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    OfflineProvider
   ]
 })
 export class AppModule {}

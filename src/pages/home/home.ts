@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import Parser from 'rss-parser';
 import { NewsDetailPage } from '../news-detail/news-detail';
+import { OfflineProvider } from '../../providers/offline/offline';
 
 @Component({
   selector: 'page-home',
@@ -12,7 +13,7 @@ export class HomePage {
 
   feed: any = null;
 
-  constructor(public navCtrl: NavController, private loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, private loadingCtrl: LoadingController, private offline: OfflineProvider) {
     this.loadRSS();
   }
 
@@ -29,6 +30,9 @@ export class HomePage {
 
     this.feed = await parser.parseURL(CORS_PROXY + 'https://www.elcomercio.com/rss/');
     //console.log(this.feed);
+    this.feed.items.forEach(element => {
+      element = this.offline.getDate(element);
+    });
     loading.dismiss();
   }
 

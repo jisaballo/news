@@ -8,10 +8,10 @@
   <div *ngIf="noticia">
     <ion-item>
       <ion-avatar item-start>
-        <img src="assets/imgs/empty-img.png">
+        <img src="assets/imgs/icon_el_comercio.ico">
       </ion-avatar>
       <h2>El Comercio</h2>
-      <p>{{noticia.pubDate | date : "dd MMM yyyy hh:mm a"}}</p>
+      <p>{{noticia.pubDate}}</p>
     </ion-item>
     <div *ngIf="noticia.enclosure"><img [src]="noticia.enclosure.url"></div>
     <ion-card-content>

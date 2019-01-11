@@ -10,10 +10,10 @@
     <div *ngFor="let item of feed.items" (click)="viewDetail(item)">
       <ion-item>
         <ion-avatar item-start>
-          <img src="assets/imgs/empty-img.png">
+          <img src="assets/imgs/icon_el_comercio.ico">
         </ion-avatar>
         <h2>El Comercio</h2>
-        <p>{{item.pubDate | date : "dd MMM yyyy hh:mm a"}}</p>
+        <p>{{item.pubDate}}</p>
       </ion-item>
       <div *ngIf="item.enclosure"><img [src]="item.enclosure.url"></div>
       <ion-card-content>
