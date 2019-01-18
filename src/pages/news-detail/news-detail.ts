@@ -16,7 +16,7 @@ export class NewsDetailPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private iab: InAppBrowser, 
     private socialSharing: SocialSharing, private offline: OfflineProvider) {
     this.noticia = this.navParams.get('item');
-    //console.log(this.noticia);
+    console.log(this.noticia);
   }
 
   ionViewDidLoad() {
@@ -29,7 +29,8 @@ export class NewsDetailPage {
   }
 
   viewOnBrowser() {
-    const browser = this.iab.create('https://ionicframework.com/');
+    const browser = this.iab.create(this.noticia['link']);
+    console.log(this.noticia['link']);
 
     //browser.executeScript(...);
 
