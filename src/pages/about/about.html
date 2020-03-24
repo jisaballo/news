@@ -5,23 +5,47 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>El Comercio</ion-list-header>
-    <button ion-item (click)="viewSection(1)">
-      <span ion-text color="primary">Actualidad</span>
-      <ion-icon item-end name="ios-arrow-forward" color="primary"></ion-icon>
-    </button>
-    <ion-item (click)="viewSection(2)">
-      <span ion-text color="primary">Tendencias</span>
-      <ion-icon item-end name="ios-arrow-forward" color="primary"></ion-icon>
-    </ion-item>
-    <ion-item (click)="viewSection(3)">
-      <span ion-text color="primary">Deportes</span>
-      <ion-icon item-end name="ios-arrow-forward" color="primary"></ion-icon>
-    </ion-item>
-    <ion-item (click)="viewSection(4)">
-      <span ion-text color="primary">Opinión</span>
-      <ion-icon item-end name="ios-arrow-forward" color="primary"></ion-icon>
-    </ion-item>
-  </ion-list>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <button ion-item (click)="viewSection(1)" text-center no-lines text-wrap>
+          <span ion-text color="primary">Actualidad</span>
+          <p ion-text text-justify>Noticias de Ecuador y del mundo. Los temas de Política, Seguridad y Judicial, Negocios, Quito y Ecuador en una sola 
+            sección. En una página puede ver los temas de actualidad de Ecuador y el mundo.</p>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12 text-justify>
+        <ion-item (click)="viewSection(2)" text-center no-lines text-wrap>
+          <span ion-text color="primary">Tendencias</span>
+          <p ion-text text-justify>Todas las noticias que son tendencia en Ecuador y el mundo en una página. Los temas de 
+            Entretenimiento o Espectáculos, Cultura y Tecnología se muestran en esta sección.</p>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-12 text-justify>
+        <ion-item (click)="viewSection(3)" text-center no-lines text-wrap>
+          <span ion-text color="primary">Deportes</span>
+          <p ion-text text-justify>Noticias de Ecuador y del mundo informando sobre fútbol ecuatoriano y mundial, 
+            tenis, baloncesto, fórmula 1 y otros deportes de Ecuador y del mundo.</p>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-12 text-justify>
+        <ion-item (click)="viewSection(4)" text-center no-lines text-wrap>
+          <span ion-text color="primary">Opinión</span>
+          <p ion-text text-justify>Noticias de Ecuador y del mundo. La opinión de nuestro director en su editorial y de nuestros 
+            columnistas. Además las caricaturas de nuestro dibujantes. También se muestran las cartas a la dirección que envian los 
+            lectores de El Comercio.</p>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>

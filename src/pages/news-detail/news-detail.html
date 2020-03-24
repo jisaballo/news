@@ -1,5 +1,10 @@
 <ion-header>
   <ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="shareViaWhatsapp()">
+        <ion-icon color="primary" name="share"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Detalle</ion-title>
   </ion-navbar>
 </ion-header>
@@ -20,16 +25,14 @@
       <br>
       <span>{{noticia.content}}</span>
     </ion-card-content>
-    <ion-item-divider no-lines></ion-item-divider>
   </div>
+
   <div padding>
-    <ion-row>
-      <ion-col col-6>
-        <button ion-button large block round outline (click)="shareViaWhatsapp()">
-          <span>Compartir</span>
-        </button>
-      </ion-col>
-      <ion-col col-6><button ion-button large block round (click)="viewOnBrowser()">Ver</button></ion-col>
-    </ion-row>
+    <button ion-item large block (click)="viewOnBrowser()" text-wrap no-lines>
+      <span ion-text color="primary">Ver noticia en el comercio</span>
+      <ion-icon item-start name="warning" color="warning"></ion-icon>
+      <p>Esta acción le llevara al sitio de El Comercio</p>
+    </button>
   </div>
+
 </ion-content>

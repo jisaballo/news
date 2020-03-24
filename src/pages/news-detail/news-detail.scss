@@ -1,5 +1,8 @@
 page-news-detail {
-    .item-divider {
+    .content, .item-divider {
         background-color: #eeeef0;
+    }
+    .item {
+        border-radius: 5px;
     }
 }

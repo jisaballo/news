@@ -7,19 +7,18 @@
 <ion-content>
   <div *ngIf="feed">
     <div *ngFor="let item of feed.items" (click)="viewDetail(item)">
-      <ion-item>
-        <ion-avatar item-start>
-          <img src="assets/imgs/icon_el_comercio.ico">
-        </ion-avatar>
-        <h2>El Comercio</h2>
-        <p>{{item.pubDate}}</p>
-      </ion-item>
-      <div *ngIf="item.enclosure"><img [src]="item.enclosure.url"></div>
-      <ion-item text-wrap no-lines>
-        <p ion-text color="primary">{{item.author}}</p>
-        <p>{{item.title}}</p>
-      </ion-item>
-      <ion-item-divider no-lines></ion-item-divider>
+      <ion-card>
+        <ion-item text-wrap>
+          <h2>{{item.title}}</h2>
+        </ion-item>
+        <div *ngIf="item.enclosure"><img [src]="item.enclosure.url"></div>
+        <ion-item text-wrap no-lines>
+          <ion-row>
+            <ion-col col-6><p ion-text color="primary">{{item.author}}</p></ion-col>
+            <ion-col col-6 text-right><p>{{item.pubDate}}</p></ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-card>
     </div>
   </div>
 </ion-content>

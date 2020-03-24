@@ -2,11 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppRate } from '@ionic-native/app-rate';
 import { Platform } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class OfflineProvider {
 
-  constructor(public http: HttpClient, public platform: Platform, private appRate: AppRate) {
+  constructor(
+    public http: HttpClient, 
+    public platform: Platform, 
+    private appRate: AppRate,
+    private storage: Storage
+  ) {
     console.log('Hello OfflineProvider Provider');
   }
 
@@ -67,5 +73,18 @@ export class OfflineProvider {
     }
     feed.pubDate = day + ' de ' + month + ', ' + (hours < 10 ? '0' + hours : hours) + ':' + (minutes < 10 ? '0' + minutes : minutes) + ' ' + meridiam;
     return feed;
+  }
+
+  saveCredentials(correo: string, contrasena: string) {
+    this.storage.get('email').then((email) => {
+      if(!email) {
+        this.storage.set('email', correo);
+        this.storage.get('password').then((password) => {
+          if(!password) {
+            this.storage.set('password', contrasena);
+          }
+        });
+      }
+    });
   }
 }

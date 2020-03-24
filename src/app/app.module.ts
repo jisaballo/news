@@ -17,6 +17,25 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { OfflineProvider } from '../providers/offline/offline';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRate } from '@ionic-native/app-rate';
+import { FcmServiceProvider } from '../providers/fcm-service/fcm-service';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AuthProvider } from '../providers/auth/auth';
+
+import { IonicStorageModule } from '@ionic/storage';
+import { RegisterPageModule } from '../pages/register/register.module';
+import { LoginPageModule } from '../pages/login/login.module';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyAT7HZk1RCuy5A47Fq50YPSyWzyz3o53kE",
+  authDomain: "news-e30dc.firebaseapp.com",
+  databaseURL: "https://news-e30dc.firebaseio.com",
+  projectId: "news-e30dc",
+  storageBucket: "news-e30dc.appspot.com",
+  messagingSenderId: "504171447769"
+};
 
 @NgModule({
   declarations: [
@@ -31,7 +50,12 @@ import { AppRate } from '@ionic-native/app-rate';
     HttpClientModule,
     NewsPageModule,
     NewsDetailPageModule,
-    IonicModule.forRoot(MyApp)
+    RegisterPageModule,
+    LoginPageModule,
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -48,7 +72,9 @@ import { AppRate } from '@ionic-native/app-rate';
     AppRate,
     SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    OfflineProvider
+    OfflineProvider,
+    FcmServiceProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}
